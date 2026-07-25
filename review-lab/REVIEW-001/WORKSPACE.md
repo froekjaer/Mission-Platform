@@ -105,8 +105,8 @@ and **For whom?** with a traceable record. See the reviewer guide at
 
 ## Submission status
 
-Status: `NOT STARTED`
-Frozen commit: `TBD`
+Status: `FROZEN — ready for blind comparison` (2026-07-25)
+Frozen commit: see `git log -1 review/review-001-zai`; the freeze commit adds `docs/HANDOVER.md` and the filled `SUBMISSION-CHECKLIST.md`.
 
 Update this section as work progresses. Submission is complete only when the
 framework gate at
