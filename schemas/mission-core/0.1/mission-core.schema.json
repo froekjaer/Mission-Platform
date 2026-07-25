@@ -1,0 +1,175 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mission-platform.org/schemas/mission-core/0.1/mission-core.schema.json",
+  "title": "Mission Core",
+  "description": "Foundation 0.1 machine-readable representation of a mission and its traceability to reality, objectives, capabilities, services, implementation and evidence.",
+  "type": "object",
+  "required": ["schemaVersion", "id", "name", "status", "realityAnchors", "objectives"],
+  "properties": {
+    "schemaVersion": { "const": "0.1" },
+    "id": { "$ref": "#/$defs/identifier" },
+    "name": { "type": "string", "minLength": 1 },
+    "description": { "type": "string" },
+    "status": { "enum": ["proposed", "active", "paused", "completed", "retired"] },
+    "owner": { "$ref": "#/$defs/partyRef" },
+    "validity": { "$ref": "#/$defs/timeWindow" },
+    "realityAnchors": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/realityAnchor" }
+    },
+    "objectives": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/objective" }
+    },
+    "capabilities": { "type": "array", "items": { "$ref": "#/$defs/capability" } },
+    "services": { "type": "array", "items": { "$ref": "#/$defs/service" } },
+    "implementations": { "type": "array", "items": { "$ref": "#/$defs/implementation" } },
+    "evidence": { "type": "array", "items": { "$ref": "#/$defs/evidence" } },
+    "relationships": { "type": "array", "items": { "$ref": "#/$defs/relationship" } },
+    "provenance": { "$ref": "#/$defs/provenance" }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "identifier": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9._:-]{2,127}$"
+    },
+    "elementBase": {
+      "type": "object",
+      "required": ["id", "name"],
+      "properties": {
+        "id": { "$ref": "#/$defs/identifier" },
+        "name": { "type": "string", "minLength": 1 },
+        "description": { "type": "string" },
+        "owner": { "$ref": "#/$defs/partyRef" },
+        "validity": { "$ref": "#/$defs/timeWindow" },
+        "provenance": { "$ref": "#/$defs/provenance" }
+      }
+    },
+    "partyRef": {
+      "type": "object",
+      "required": ["id", "role"],
+      "properties": {
+        "id": { "$ref": "#/$defs/identifier" },
+        "role": { "enum": ["accountable", "responsible", "consulted", "informed", "operator", "custodian", "authority"] }
+      },
+      "additionalProperties": false
+    },
+    "timeWindow": {
+      "type": "object",
+      "properties": {
+        "validFrom": { "type": "string", "format": "date-time" },
+        "validTo": { "type": "string", "format": "date-time" },
+        "recordedAt": { "type": "string", "format": "date-time" }
+      },
+      "additionalProperties": false
+    },
+    "provenance": {
+      "type": "object",
+      "required": ["recordedBy", "recordedAt"],
+      "properties": {
+        "recordedBy": { "$ref": "#/$defs/identifier" },
+        "recordedAt": { "type": "string", "format": "date-time" },
+        "source": { "type": "string" },
+        "method": { "type": "string" },
+        "aiGenerated": { "type": "boolean", "default": false },
+        "humanApprovedBy": { "$ref": "#/$defs/identifier" }
+      },
+      "additionalProperties": false
+    },
+    "realityAnchor": {
+      "allOf": [
+        { "$ref": "#/$defs/elementBase" },
+        {
+          "type": "object",
+          "required": ["statement"],
+          "properties": {
+            "statement": { "type": "string", "minLength": 1 },
+            "verificationMethod": { "type": "string" }
+          }
+        }
+      ]
+    },
+    "objective": {
+      "allOf": [
+        { "$ref": "#/$defs/elementBase" },
+        {
+          "type": "object",
+          "required": ["contributesToMission", "successMeasures"],
+          "properties": {
+            "contributesToMission": { "$ref": "#/$defs/identifier" },
+            "successMeasures": { "type": "array", "minItems": 1, "items": { "type": "string" } }
+          }
+        }
+      ]
+    },
+    "capability": {
+      "allOf": [
+        { "$ref": "#/$defs/elementBase" },
+        {
+          "type": "object",
+          "required": ["supports"],
+          "properties": { "supports": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/identifier" } } }
+        }
+      ]
+    },
+    "service": {
+      "allOf": [
+        { "$ref": "#/$defs/elementBase" },
+        {
+          "type": "object",
+          "required": ["realisesCapabilities"],
+          "properties": { "realisesCapabilities": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/identifier" } } }
+        }
+      ]
+    },
+    "implementation": {
+      "allOf": [
+        { "$ref": "#/$defs/elementBase" },
+        {
+          "type": "object",
+          "required": ["implementsServices", "kind"],
+          "properties": {
+            "kind": { "enum": ["workflow", "component", "infrastructure", "resource", "other"] },
+            "implementsServices": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/identifier" } }
+          }
+        }
+      ]
+    },
+    "evidence": {
+      "allOf": [
+        { "$ref": "#/$defs/elementBase" },
+        {
+          "type": "object",
+          "required": ["observedAt", "supportsOrChallenges", "source"],
+          "properties": {
+            "observedAt": { "type": "string", "format": "date-time" },
+            "supportsOrChallenges": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/identifier" } },
+            "source": { "type": "string", "minLength": 1 },
+            "assessment": { "enum": ["supports", "challenges", "inconclusive"] }
+          }
+        }
+      ]
+    },
+    "relationship": {
+      "type": "object",
+      "required": ["id", "source", "target", "type"],
+      "properties": {
+        "id": { "$ref": "#/$defs/identifier" },
+        "source": { "$ref": "#/$defs/identifier" },
+        "target": { "$ref": "#/$defs/identifier" },
+        "type": { "type": "string", "minLength": 1 },
+        "inverseMeaning": { "type": "string" },
+        "owner": { "$ref": "#/$defs/partyRef" },
+        "status": { "enum": ["proposed", "active", "deprecated", "invalid"] },
+        "rationale": { "type": "string" },
+        "evidenceRefs": { "type": "array", "items": { "$ref": "#/$defs/identifier" } },
+        "validity": { "$ref": "#/$defs/timeWindow" },
+        "provenance": { "$ref": "#/$defs/provenance" }
+      },
+      "additionalProperties": false
+    }
+  }
+}

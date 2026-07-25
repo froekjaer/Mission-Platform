@@ -14,12 +14,25 @@ It is documentation-first, technology-independent and designed to maintain an ex
 6. [Mission Meta Model](docs/architecture/mission-meta-model.md)
 7. [Mission Architecture Tests](docs/architecture/architecture-tests.md)
 8. [Architecture Decision Records](docs/adr/README.md)
+9. [Versioning and Compatibility](docs/governance/versioning.md)
+
+## Foundation artifacts
+
+Foundation 0.1 introduces the first machine-readable Mission Core contract:
+
+- [Mission Core 0.1 JSON Schema](schemas/mission-core/0.1/mission-core.schema.json)
+- [Minimal traceable mission example](examples/foundation-0.1/minimal-mission.json)
+- [Schema versioning and compatibility policy](docs/governance/versioning.md)
+
+The schema is deliberately technology-neutral. It formalises stable identity, ownership, time, provenance and bidirectional traceability while leaving runtime architecture open.
 
 ## Status
 
-**Foundation 0.1 — Draft**
+**Foundation 0.1 — Release Candidate**
 
-The repository currently establishes the conceptual and architectural foundation. Reference implementations, schemas, APIs, tools and examples will follow.
+The repository now contains the conceptual architecture and the first experimental machine-readable contract. APIs, executable architecture tests, additional examples and reference services remain future work.
+
+Foundation 0.1 is intended for validation and implementation learning. It is not yet a stable 1.0 compatibility promise.
 
 ## Core idea
 

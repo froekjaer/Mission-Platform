@@ -1,0 +1,81 @@
+{
+  "schemaVersion": "0.1",
+  "id": "mission.foundation-example",
+  "name": "Foundation Example Mission",
+  "description": "A minimal traceable mission used to test the Foundation 0.1 schema.",
+  "status": "active",
+  "owner": {
+    "id": "role.mission-owner",
+    "role": "accountable"
+  },
+  "realityAnchors": [
+    {
+      "id": "reality.need-verified-information",
+      "name": "Verified information is required",
+      "statement": "Participants need current, verifiable information to make safe decisions.",
+      "verificationMethod": "Participant interviews and operational observations"
+    }
+  ],
+  "objectives": [
+    {
+      "id": "objective.deliver-traceable-guidance",
+      "name": "Deliver traceable guidance",
+      "contributesToMission": "mission.foundation-example",
+      "successMeasures": [
+        "Every recommendation links to evidence",
+        "A human owner approves consequential decisions"
+      ]
+    }
+  ],
+  "capabilities": [
+    {
+      "id": "capability.evidence-management",
+      "name": "Evidence management",
+      "supports": ["objective.deliver-traceable-guidance"]
+    }
+  ],
+  "services": [
+    {
+      "id": "service.evidence-register",
+      "name": "Evidence register",
+      "realisesCapabilities": ["capability.evidence-management"]
+    }
+  ],
+  "implementations": [
+    {
+      "id": "component.evidence-store",
+      "name": "Evidence store",
+      "kind": "component",
+      "implementsServices": ["service.evidence-register"]
+    }
+  ],
+  "evidence": [
+    {
+      "id": "evidence.interview-001",
+      "name": "Participant interview summary",
+      "observedAt": "2026-07-21T09:00:00Z",
+      "supportsOrChallenges": ["reality.need-verified-information"],
+      "source": "Interview record 001",
+      "assessment": "supports"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "relationship.reality-to-mission",
+      "source": "reality.need-verified-information",
+      "target": "mission.foundation-example",
+      "type": "justifies",
+      "inverseMeaning": "responds to",
+      "status": "active",
+      "evidenceRefs": ["evidence.interview-001"],
+      "rationale": "The mission exists to address the verified information need."
+    }
+  ],
+  "provenance": {
+    "recordedBy": "role.mission-architect",
+    "recordedAt": "2026-07-21T09:30:00Z",
+    "source": "Mission Platform Foundation 0.1",
+    "method": "human-authored",
+    "aiGenerated": false
+  }
+}
