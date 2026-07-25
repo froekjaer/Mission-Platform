@@ -105,8 +105,10 @@ and **For whom?** with a traceable record. See the reviewer guide at
 
 ## Submission status
 
-Status: `NOT STARTED`
+Status: `IN PROGRESS`
 Frozen commit: `TBD`
+
+Initial assessment: [`docs/00-INITIAL-ASSESSMENT.md`](docs/00-INITIAL-ASSESSMENT.md)
 
 Update this section as work progresses. Submission is complete only when the
 framework gate at
