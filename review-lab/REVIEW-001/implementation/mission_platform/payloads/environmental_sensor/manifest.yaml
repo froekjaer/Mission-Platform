@@ -1,0 +1,21 @@
+# payloads/environmental_sensor/manifest.yaml
+# STUB payload — proves a second payload loads against the contract with no
+# platform changes. Note: declares a NETWORK destination, unlike timelapse,
+# so the isolation test proves allowlists are per-payload.
+contract_version: "1.0.0"
+payload: environmental_sensor
+data_classification: environmental
+hardware:
+  required: []                           # stub — no real hardware
+resource_quota:
+  cpu_percent: 10
+  ram_mb: 256
+  disk_gb: 1
+allowlist:
+  files: ["/tmp/payload/env-sensor/"]
+  network: ["10.0.0.50:502"]             # a Modbus TCP sensor, illustrative
+service_identity: payload-env-sensor
+health:
+  heartbeat_s: 300
+  rollback_on: [crash_loop]
+api_version: "0.1.0"
