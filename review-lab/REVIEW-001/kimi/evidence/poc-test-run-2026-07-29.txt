@@ -1,0 +1,15 @@
+PASS  tampered manifest rejected (fail-closed)
+PASS  unknown capability rejected (fail-closed)
+PASS  payload runs as separate OS process  — pid=1082
+PASS  non-allowlisted command rejected
+PASS  capture artifact accepted with verified SHA-256  — sha256=deff52dac8300a9d…
+PASS  telemetry via control plane
+PASS  corrupted artifact rejected by data plane
+PASS  kill switch terminates payload
+PASS  decisions logged to audit trail
+
+9/9 checks passed
+---
+Environment: Python 3.12.12, Linux 5.10.134-18.0.11.lifsea8.x86_64 x86_64
+Command: python3 tests/test_vertical_slice.py
+Date: 2026-07-29

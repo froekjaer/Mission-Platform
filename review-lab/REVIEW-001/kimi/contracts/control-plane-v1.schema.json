@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mission-platform/contracts/control-plane-v1.schema.json",
+  "title": "Mission Platform Control Plane v1 (lifecycle/config/command/health)",
+  "description": "Separate from the data plane (ADR-K002 amendment: control and data are two contracts, each its own SemVer).",
+  "type": "object",
+  "required": ["schema", "cmd"],
+  "properties": {
+    "schema": {"const": "mission.control.v1"},
+    "cmd": {"type": "string", "description": "Must be in the platform's command allowlist; non-allowlisted commands fail closed."},
+    "args": {"type": "object"},
+    "ticket": {"type": "string", "description": "JIT AccessTicket reference when the command originates from remote support (ADR-K004)."}
+  },
+  "responses": {
+    "type": "object",
+    "required": ["schema", "status"],
+    "properties": {
+      "schema": {"const": "mission.control.v1"},
+      "status": {"enum": ["ok", "rejected", "error", "degraded"]},
+      "telemetry": {"type": "object"},
+      "artifact": {"type": "string"},
+      "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+    }
+  },
+  "failure_contract": {
+    "timeout_ms": 30000,
+    "on_timeout": "payload marked unhealthy; restart policy from manifest.health applies",
+    "on_malformed": "connection closed, event logged, payload restart",
+    "compatibility": "platform 1.x accepts payload control 1.x; major mismatch = reject at load"
+  }
+}
