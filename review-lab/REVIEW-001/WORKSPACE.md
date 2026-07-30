@@ -105,7 +105,7 @@ and **For whom?** with a traceable record. See the reviewer guide at
 
 ## Submission status
 
-Status: `NOT STARTED`
+Status: `IN PROGRESS` (phase 1 — intake and baseline evaluation, 2026-07-31)
 Frozen commit: `TBD`
 
 Update this section as work progresses. Submission is complete only when the
