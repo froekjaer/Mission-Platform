@@ -1,0 +1,78 @@
+review: REVIEW-001
+
+status: FROZEN
+archive_branch: review/review-001-freeze
+prepared: 2026-07-31
+prepared_by: "Claude (archive preparation only; no meta-review performed)"
+source_repository: froekjaer/Mission-Platform
+source_baseline:
+  repository: froekjaer/timelapse-pro
+  commit: eed9e3c8c67369e1924c25a11908616220c3c753
+integrity: "every archived file verified byte-identical (sha256) to its source branch commit at archive time"
+
+reviewers:
+
+  - name: ChatGPT
+    branch: review/review-001-chatgpt
+    commit: 59ca47994ee6030f0d61f77779eb40c1ff65dceb
+    freeze_timestamp: "2026-07-25T21:40:27+02:00"
+    working_language: English
+    directory: review-lab/REVIEW-001/chatgpt/
+    entry: review-lab/REVIEW-001/chatgpt/docs/00-INITIAL-ASSESSMENT.md
+    evidence: null
+    notes: "workspace scaffold plus one initial-assessment document at freeze time"
+
+  - name: Codex
+    branch: review/review-001-codex
+    commit: b6549c49d8ea0a0ec67c7c42f2b859567a6fe64d
+    freeze_timestamp: "2026-07-25T14:52:56+02:00"
+    working_language: null
+    directory: review-lab/REVIEW-001/codex/
+    entry: review-lab/REVIEW-001/codex/WORKSPACE.md
+    evidence: null
+    notes: "workspace scaffold only; no submission documents present at freeze time"
+
+  - name: Z.ai
+    branch: review/review-001-zai
+    commit: 3e99418ac6b5690b92ff3fc1a195b8d18e04fcc2
+    freeze_timestamp: "2026-07-25T20:23:36+02:00"
+    working_language: English
+    directory: review-lab/REVIEW-001/z-ai/
+    entry: review-lab/REVIEW-001/z-ai/docs/EXECUTIVE_SUMMARY.md
+    evidence: review-lab/REVIEW-001/z-ai/evidence/
+    notes: "includes executable implementation and tests"
+
+  - name: Kimi
+    branch: review/review-001-kimi
+    commit: e96803a60f8f440af2e8f080f53a7bd55d32c96b
+    freeze_timestamp: "2026-07-29T06:43:25+02:00"
+    working_language: "Danish/English (mixed)"
+    directory: review-lab/REVIEW-001/kimi/
+    entry: review-lab/REVIEW-001/kimi/00-EXECUTIVE-SUMMARY.md
+    evidence: review-lab/REVIEW-001/kimi/evidence/
+    notes: "source branch nested content under kimi/; prefix preserved once"
+
+  - name: Gemini
+    branch: review/review-001-gemini
+    commit: f7df11db782e5a64e6f904f4fe6e7525a99e4e8c
+    freeze_timestamp: "2026-07-31T02:12:28+02:00"
+    working_language: English
+    directory: review-lab/REVIEW-001/gemini/
+    entry: review-lab/REVIEW-001/gemini/GEMINI-SUBMISSION.md
+    evidence: "embedded in entry document"
+    notes: "submission delivered as a single consolidated document"
+
+  - name: Claude
+    branch: review/review-001-claude
+    commit: c75b812368b689a3d52247bfec295bf887dd449e
+    freeze_timestamp: "2026-07-31T02:21:48+02:00"
+    working_language: English
+    directory: review-lab/REVIEW-001/claude/
+    entry: review-lab/REVIEW-001/claude/docs/00-EXECUTIVE-SUMMARY.md
+    evidence: review-lab/REVIEW-001/claude/evidence/
+    notes: "includes executable implementation and tests"
+
+excluded:
+  - branch: review/review-001-human
+    commit: 88dfe04a5e942343cbc78b4408423a1f3aae0b11
+    reason: "not listed in the freeze-preparation instruction; branch contains workspace scaffold only at archive time"

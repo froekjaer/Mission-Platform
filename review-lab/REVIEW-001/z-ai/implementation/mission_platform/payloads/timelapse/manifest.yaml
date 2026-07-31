@@ -1,0 +1,21 @@
+# payloads/timelapse/manifest.yaml
+# The capability manifest the timelapse payload DECLARES. The platform
+# supervisor ENFORCES it fail-closed (ADR-Z-002). Edit with care — changes
+# to required fields are contract changes.
+contract_version: "1.0.0"
+payload: timelapse
+data_classification: image_evidence      # drives retention/DPIA (Proportionate compliance)
+hardware:
+  required: [camera_ptp, relay_gpio]
+resource_quota:
+  cpu_percent: 40
+  ram_mb: 1024
+  disk_gb: 50
+allowlist:
+  files: ["/tmp/payload/timelapse/"]
+  network: []                            # timelapse has no direct network need (headend-mediated)
+service_identity: payload-timelapse      # != platform credential (amendment 3)
+health:
+  heartbeat_s: 60
+  rollback_on: [crash_loop, bad_contract_version]
+api_version: "1.0.0"

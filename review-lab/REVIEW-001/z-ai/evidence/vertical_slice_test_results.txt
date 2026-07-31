@@ -1,0 +1,26 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.12.5, pytest-9.1.1, pluggy-1.6.0 -- /private/tmp/zai-review/Mission-Platform/review-lab/REVIEW-001/implementation/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /private/tmp/zai-review/Mission-Platform/review-lab/REVIEW-001/implementation
+configfile: pytest.ini
+collecting ... collected 17 items
+
+mission_platform/tests/test_contract_and_isolation.py::TestContractFitsReality::test_timelapse_loads_configures_ticks_and_captures PASSED [  5%]
+mission_platform/tests/test_contract_and_isolation.py::TestContractFitsReality::test_telemetry_flows_through_the_contract PASSED [ 11%]
+mission_platform/tests/test_contract_and_isolation.py::TestContractFitsReality::test_allowlisted_command_reaches_payload PASSED [ 17%]
+mission_platform/tests/test_contract_and_isolation.py::TestCapabilityEnforcementFailClosed::test_off_manifest_file_write_is_denied_and_logged PASSED [ 23%]
+mission_platform/tests/test_contract_and_isolation.py::TestCapabilityEnforcementFailClosed::test_off_manifest_network_access_is_denied_and_logged PASSED [ 29%]
+mission_platform/tests/test_contract_and_isolation.py::TestCapabilityEnforcementFailClosed::test_on_manifest_network_access_is_allowed PASSED [ 35%]
+mission_platform/tests/test_contract_and_isolation.py::TestExtensibility::test_two_payloads_load_independently PASSED [ 41%]
+mission_platform/tests/test_contract_and_isolation.py::TestExtensibility::test_payloads_have_independent_allowlists PASSED [ 47%]
+mission_platform/tests/test_contract_and_isolation.py::TestExtensibility::test_second_payload_takes_no_platform_code_change PASSED [ 52%]
+mission_platform/tests/test_contract_and_isolation.py::TestManifestValidation::test_missing_required_field_is_rejected PASSED [ 58%]
+mission_platform/tests/test_contract_and_isolation.py::TestManifestValidation::test_unknown_data_classification_is_rejected PASSED [ 64%]
+mission_platform/tests/test_contract_and_isolation.py::TestManifestValidation::test_missing_quota_field_is_rejected PASSED [ 70%]
+mission_platform/tests/test_contract_and_isolation.py::TestManifestValidation::test_supervisor_rejects_bad_manifest_and_logs PASSED [ 76%]
+mission_platform/tests/test_contract_and_isolation.py::TestContractCompatibility::test_incompatible_payload_version_is_rejected PASSED [ 82%]
+mission_platform/tests/test_contract_and_isolation.py::TestContractCompatibility::test_driver_version_drift_is_rejected PASSED [ 88%]
+mission_platform/tests/test_contract_and_isolation.py::TestAuditSpine::test_every_lifecycle_decision_is_audited PASSED [ 94%]
+mission_platform/tests/test_contract_and_isolation.py::TestAuditSpine::test_actor_namespace_is_correct PASSED [100%]
+
+============================== 17 passed in 0.04s ==============================

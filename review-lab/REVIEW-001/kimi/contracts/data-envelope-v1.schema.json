@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mission-platform/contracts/data-envelope-v1.schema.json",
+  "title": "Mission Platform Data Plane Envelope v1",
+  "description": "Content-addressed artifacts with SHA-256 sidecar; mirrors TimeLapse Pro's proven pre-XMP hash evidence model, generalized from images to any payload data class.",
+  "type": "object",
+  "required": ["schema", "artifact", "sha256", "captured_at", "classification"],
+  "properties": {
+    "schema": {"const": "mission.data-envelope.v1"},
+    "artifact": {"type": "string"},
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "captured_at": {"type": "string", "format": "date-time"},
+    "classification": {"enum": ["image", "process", "telemetry"]},
+    "provenance": {
+      "type": "object",
+      "properties": {
+        "device_id": {"type": "string"},
+        "payload_id": {"type": "string"},
+        "payload_version": {"type": "string"},
+        "site_id": {"type": "string"}
+      }
+    },
+    "integrity_note": {"type": "string", "description": "e.g. hash computed pre-processing at the edge; legal-evidence grade when signed by device key (roadmap)."}
+  },
+  "additionalProperties": false
+}

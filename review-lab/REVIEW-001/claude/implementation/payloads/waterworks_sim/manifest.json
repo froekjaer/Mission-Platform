@@ -1,0 +1,12 @@
+{
+  "manifest_version": 1,
+  "payload": {"name": "waterworks_sim", "version": "0.1.0"},
+  "contracts": {"control": "1.x", "data": "1.x"},
+  "capabilities": ["modbus.read"],
+  "quotas": {"cpu_pct": 10, "mem_mb": 128, "disk_mb": 16, "net_kbps": 0},
+  "filesystem": {"readwrite": ["/var/spool/mission/waterworks_sim"]},
+  "channels": [
+    {"name": "flow", "kind": "timeseries", "classification": "process-telemetry", "retention_class": "ot-5y"},
+    {"name": "alarms", "kind": "event", "classification": "process-telemetry", "retention_class": "ot-5y"}
+  ]
+}
