@@ -105,8 +105,8 @@ and **For whom?** with a traceable record. See the reviewer guide at
 
 ## Submission status
 
-Status: `IN PROGRESS` (phase 1 — intake and baseline evaluation, 2026-07-31)
-Frozen commit: `TBD`
+Status: `FROZEN` (submission complete 2026-07-31, awaiting Meta Review)
+Frozen commit: `b43f9930639f5a0e80f98c96a25990d48f233048` (submission content; this FREEZE commit is the branch tip and changes only this status block)
 
 Update this section as work progresses. Submission is complete only when the
 framework gate at
