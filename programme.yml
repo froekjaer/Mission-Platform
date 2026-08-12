@@ -1,0 +1,63 @@
+schema_version: 1
+
+programme:
+  id: collaborative-intelligence
+  name: Collaborative Intelligence
+
+repository:
+  full_name: froekjaer/Mission-Platform
+  role: platform-implementation
+  lifecycle: foundation
+  status: active
+  version: "0.1-draft"
+  default_branch: main
+
+purpose:
+  summary: >-
+    Reusable technical implementation of Mission Framework semantics through
+    schemas, contracts, validators, services, tooling and governed runtime patterns.
+
+ownership:
+  owns:
+    - platform-runtime-contracts
+    - platform-schemas
+    - platform-validators
+    - platform-services
+    - control-plane-architecture
+    - data-plane-architecture
+    - platform-payload-boundary
+  does_not_own:
+    - programme-research-direction
+    - canonical-mission-semantics
+    - mission-specific-domain-evidence
+    - publication-rendering
+
+dependencies:
+  consumes_from:
+    - repository: froekjaer/collaborative-intelligence
+      capability: programme-context
+    - repository: froekjaer/mission-framework
+      capability: canonical-semantics
+    - repository: froekjaer/timelapse-pro
+      capability: brownfield-source-evidence
+  provides_to:
+    - repository: froekjaer/mission-framework
+      capability: implementation-findings
+    - repository: froekjaer/-Publication-Pipeline
+      capability: platform-status-and-contract-sources
+
+current:
+  baseline: Foundation 0.1 Draft
+  initiative: REVIEW-001 independent architecture and brownfield transformation
+  roadmap: README.md
+  status_document: README.md
+  architecture_document: docs/architecture/overview.md
+
+publication:
+  include:
+    - README.md
+    - docs/architecture/overview.md
+    - docs/architecture/mission-reference-model.md
+    - docs/architecture/mission-meta-model.md
+    - docs/architecture/architecture-tests.md
+  authority: implementation
