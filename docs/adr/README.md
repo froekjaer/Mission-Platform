@@ -36,3 +36,4 @@ The purpose is organisational memory, not administrative overhead.
 ## Records
 
 - [ADR-0001: Mission Platform Vision](ADR-0001-mission-platform-vision.md)
+- [ADR-0002: Trust-oriented edge, Action Requests and Device Adapters](ADR-0002-trust-edge-action-request-device-adapters.md) — Accepted, 2026-08-12
